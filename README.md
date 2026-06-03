@@ -22,6 +22,7 @@ specification included here.
 | [`docs/reference/engagement-decision-matrix.md`](docs/reference/engagement-decision-matrix.md) | The decision logic: which triggers pull in which teams, plus the Work Type Classifier (lead-team ownership). |
 | [`docs/reference/phase-gates.md`](docs/reference/phase-gates.md) | The phase-gate model and approval definitions. |
 | [`docs/power-platform/technical-spec.md`](docs/power-platform/technical-spec.md) | The implementation design: Dataverse tables, Power Apps screen specs, Power Automate flows, and Power Fx routing logic. |
+| [`data/`](data/) | Importable seed data for the `da_decisionrule` table (JSON + CSV) — the data-driven engagement logic, ready to load into Dataverse. |
 
 ## How the process works
 

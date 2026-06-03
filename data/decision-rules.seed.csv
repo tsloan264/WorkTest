@@ -1,0 +1,19 @@
+da_name,da_triggerfield,da_triggervalue,da_teams,da_isleadcandidate,da_leadteam,da_priority,da_active,notes
+Baseline,*,*,Business Stakeholder;PMO,false,,0,true,Always engaged on every request.
+AI / ML / Predictive,da_solutiontype,AI Solution|Predictive Analytics|AI / Machine Learning,Architecture;BI Development;Data Governance,true,Architecture,1,true,Infrastructure-led; highest lead priority.
+New API,da_newapi,true,Architecture;Data Engineering;Security,true,Architecture,2,true,API surface requires Security review.
+New Integration,da_newintegration,true,Architecture;Data Engineering,true,Architecture,2,true,Shares lead priority with New API.
+New Data Source,da_newsource,true,Data Governance;Architecture;Data Engineering,true,Data Engineering,3,true,Pipeline work; Data Engineering leads.
+New Database Objects,da_newdbobjects,true,Architecture;Data Engineering,false,,3,true,Engages Architecture + Data Engineering; lead set elsewhere.
+Data Quality Initiative,da_solutiontype,Data Quality Initiative,Data Governance;Data Engineering,true,Data Governance,4,true,Governance-led quality work.
+New KPI,da_newkpi,true,Data Governance;Business Data Owner,true,Data Governance,5,true,KPI definition must be governed before build.
+New Metric Definition,da_newdefinition,true,Data Governance,false,,5,true,Requires Governance definition approval gate.
+Governance Initiative,da_solutiontype,Data Governance Initiative|Master Data Management,Data Governance,true,Data Governance,5,true,Governance-led.
+Dashboard Request,da_dashboardreq,true,BI Development;Data Analyst,true,BI Development,6,true,Presentation work; lower lead priority than infra/governance.
+Report Request,da_reportreq,true,BI Development;Data Analyst,true,BI Development,6,true,Shares lead priority with Dashboard.
+Regulatory Data,da_regulatorydata,true,Data Governance;Security;IT Controls,false,,7,true,Mandatory IT Controls sign-off at Governance + Production gates.
+Financial Reporting,da_classification,Financial,BI Development;Data Governance;IT Controls,false,,7,true,SOX scope; IT Controls sign-off required.
+Customer Data,da_customerdata,true,Security;Data Governance,false,,8,true,Mandatory Security review before Production.
+Employee Data,da_employeedata,true,Security;Data Governance;IT Controls,false,,8,true,HR-sensitive; Security + IT Controls.
+Sensitive Data,da_sensitivedata,true,Security,false,,8,true,Mandatory Security review before Production.
+Vendor Data,da_vendordata,true,Vendor Management;Data Governance,false,,9,true,Engages Vendor Management for third-party data.

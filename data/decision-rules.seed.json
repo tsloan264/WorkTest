@@ -1,0 +1,200 @@
+[
+  {
+    "da_name": "Baseline",
+    "da_triggerfield": "*",
+    "da_triggervalue": "*",
+    "da_teams": ["Business Stakeholder", "PMO"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 0,
+    "da_active": true,
+    "notes": "Always engaged on every request."
+  },
+  {
+    "da_name": "AI / ML / Predictive",
+    "da_triggerfield": "da_solutiontype",
+    "da_triggervalue": "AI Solution|Predictive Analytics|AI / Machine Learning",
+    "da_teams": ["Architecture", "BI Development", "Data Governance"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "Architecture",
+    "da_priority": 1,
+    "da_active": true,
+    "notes": "Infrastructure-led; highest lead priority."
+  },
+  {
+    "da_name": "New API",
+    "da_triggerfield": "da_newapi",
+    "da_triggervalue": "true",
+    "da_teams": ["Architecture", "Data Engineering", "Security"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "Architecture",
+    "da_priority": 2,
+    "da_active": true,
+    "notes": "API surface requires Security review."
+  },
+  {
+    "da_name": "New Integration",
+    "da_triggerfield": "da_newintegration",
+    "da_triggervalue": "true",
+    "da_teams": ["Architecture", "Data Engineering"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "Architecture",
+    "da_priority": 2,
+    "da_active": true,
+    "notes": "Shares lead priority with New API."
+  },
+  {
+    "da_name": "New Data Source",
+    "da_triggerfield": "da_newsource",
+    "da_triggervalue": "true",
+    "da_teams": ["Data Governance", "Architecture", "Data Engineering"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "Data Engineering",
+    "da_priority": 3,
+    "da_active": true,
+    "notes": "Pipeline work; Data Engineering leads."
+  },
+  {
+    "da_name": "New Database Objects",
+    "da_triggerfield": "da_newdbobjects",
+    "da_triggervalue": "true",
+    "da_teams": ["Architecture", "Data Engineering"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 3,
+    "da_active": true,
+    "notes": "Engages Architecture + Data Engineering; lead set elsewhere."
+  },
+  {
+    "da_name": "Data Quality Initiative",
+    "da_triggerfield": "da_solutiontype",
+    "da_triggervalue": "Data Quality Initiative",
+    "da_teams": ["Data Governance", "Data Engineering"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "Data Governance",
+    "da_priority": 4,
+    "da_active": true,
+    "notes": "Governance-led quality work."
+  },
+  {
+    "da_name": "New KPI",
+    "da_triggerfield": "da_newkpi",
+    "da_triggervalue": "true",
+    "da_teams": ["Data Governance", "Business Data Owner"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "Data Governance",
+    "da_priority": 5,
+    "da_active": true,
+    "notes": "KPI definition must be governed before build."
+  },
+  {
+    "da_name": "New Metric Definition",
+    "da_triggerfield": "da_newdefinition",
+    "da_triggervalue": "true",
+    "da_teams": ["Data Governance"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 5,
+    "da_active": true,
+    "notes": "Requires Governance definition approval gate."
+  },
+  {
+    "da_name": "Governance Initiative",
+    "da_triggerfield": "da_solutiontype",
+    "da_triggervalue": "Data Governance Initiative|Master Data Management",
+    "da_teams": ["Data Governance"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "Data Governance",
+    "da_priority": 5,
+    "da_active": true,
+    "notes": "Governance-led."
+  },
+  {
+    "da_name": "Dashboard Request",
+    "da_triggerfield": "da_dashboardreq",
+    "da_triggervalue": "true",
+    "da_teams": ["BI Development", "Data Analyst"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "BI Development",
+    "da_priority": 6,
+    "da_active": true,
+    "notes": "Presentation work; lower lead priority than infra/governance."
+  },
+  {
+    "da_name": "Report Request",
+    "da_triggerfield": "da_reportreq",
+    "da_triggervalue": "true",
+    "da_teams": ["BI Development", "Data Analyst"],
+    "da_isleadcandidate": true,
+    "da_leadteam": "BI Development",
+    "da_priority": 6,
+    "da_active": true,
+    "notes": "Shares lead priority with Dashboard."
+  },
+  {
+    "da_name": "Regulatory Data",
+    "da_triggerfield": "da_regulatorydata",
+    "da_triggervalue": "true",
+    "da_teams": ["Data Governance", "Security", "IT Controls"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 7,
+    "da_active": true,
+    "notes": "Mandatory IT Controls sign-off at Governance + Production gates."
+  },
+  {
+    "da_name": "Financial Reporting",
+    "da_triggerfield": "da_classification",
+    "da_triggervalue": "Financial",
+    "da_teams": ["BI Development", "Data Governance", "IT Controls"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 7,
+    "da_active": true,
+    "notes": "SOX scope; IT Controls sign-off required."
+  },
+  {
+    "da_name": "Customer Data",
+    "da_triggerfield": "da_customerdata",
+    "da_triggervalue": "true",
+    "da_teams": ["Security", "Data Governance"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 8,
+    "da_active": true,
+    "notes": "Mandatory Security review before Production."
+  },
+  {
+    "da_name": "Employee Data",
+    "da_triggerfield": "da_employeedata",
+    "da_triggervalue": "true",
+    "da_teams": ["Security", "Data Governance", "IT Controls"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 8,
+    "da_active": true,
+    "notes": "HR-sensitive; Security + IT Controls."
+  },
+  {
+    "da_name": "Sensitive Data",
+    "da_triggerfield": "da_sensitivedata",
+    "da_triggervalue": "true",
+    "da_teams": ["Security"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 8,
+    "da_active": true,
+    "notes": "Mandatory Security review before Production."
+  },
+  {
+    "da_name": "Vendor Data",
+    "da_triggerfield": "da_vendordata",
+    "da_triggervalue": "true",
+    "da_teams": ["Vendor Management", "Data Governance"],
+    "da_isleadcandidate": false,
+    "da_leadteam": "",
+    "da_priority": 9,
+    "da_active": true,
+    "notes": "Engages Vendor Management for third-party data."
+  }
+]
