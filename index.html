@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise Data & Analytics Project Intake</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Enterprise Data & Analytics</p>
+      <h1>Project Intake & Requirements Form</h1>
+      <p>
+        Capture business needs, governance requirements, security considerations,
+        delivery dependencies, and approval gates in one repeatable intake workflow.
+      </p>
+    </div>
+    <aside class="hero__panel" aria-label="Form guidance">
+      <strong>Goal</strong>
+      <span>Ensure the right teams are engaged at the right time and reduce duplicate data efforts.</span>
+    </aside>
+  </header>
+
+  <main class="layout">
+    <nav class="sidebar" aria-label="Form sections">
+      <h2>Sections</h2>
+      <ol id="sectionNav"></ol>
+      <div class="progress-card">
+        <span class="progress-card__label">Completion</span>
+        <strong id="progressValue">0%</strong>
+        <div class="progress-bar" aria-hidden="true"><span id="progressBar"></span></div>
+      </div>
+    </nav>
+
+    <form id="intakeForm" class="form-shell">
+      <section class="form-section" id="request-information" data-title="Request Information">
+        <div class="section-heading">
+          <span>Section 1</span>
+          <h2>Request Information</h2>
+        </div>
+        <div class="grid two">
+          <label>Request Name<input required name="requestName" type="text" placeholder="e.g., Executive Sales Dashboard" /></label>
+          <label>Requestor<input required name="requestor" type="text" placeholder="Name" /></label>
+          <label>Department<input name="department" type="text" placeholder="Department or business unit" /></label>
+          <label>Date Submitted<input name="dateSubmitted" type="date" /></label>
+          <label>Requested Completion Date<input name="completionDate" type="date" /></label>
+          <fieldset class="option-group"><legend>Business Priority</legend>
+            <label><input name="priority" type="radio" value="Critical" />Critical</label>
+            <label><input name="priority" type="radio" value="High" />High</label>
+            <label><input name="priority" type="radio" value="Medium" />Medium</label>
+            <label><input name="priority" type="radio" value="Low" />Low</label>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="form-section" id="business-need" data-title="Business Need">
+        <div class="section-heading"><span>Section 2</span><h2>Business Need</h2></div>
+        <label>Business Problem Statement<textarea name="problem" rows="4" placeholder="What problem are we trying to solve?"></textarea></label>
+        <label>Desired Outcome<textarea name="outcome" rows="4" placeholder="What does success look like?"></textarea></label>
+        <fieldset class="option-grid"><legend>Business Benefits</legend>
+          <label><input type="checkbox" name="benefits" value="Cost Reduction" />Cost Reduction</label>
+          <label><input type="checkbox" name="benefits" value="Time Savings" />Time Savings</label>
+          <label><input type="checkbox" name="benefits" value="Compliance" />Compliance</label>
+          <label><input type="checkbox" name="benefits" value="Improved Reporting" />Improved Reporting</label>
+          <label><input type="checkbox" name="benefits" value="Improved Data Quality" />Improved Data Quality</label>
+          <label><input type="checkbox" name="benefits" value="Automation" />Automation</label>
+          <label><input type="checkbox" name="benefits" value="Customer Experience" />Customer Experience</label>
+          <label><input type="checkbox" name="benefits" value="Risk Reduction" />Risk Reduction</label>
+          <label><input type="checkbox" name="benefits" value="Other" />Other</label>
+        </fieldset>
+      </section>
+
+      <section class="form-section" id="solution-type" data-title="Solution Type">
+        <div class="section-heading"><span>Section 3</span><h2>Solution Type</h2></div>
+        <fieldset class="option-grid"><legend>Select all that apply</legend>
+          <label><input type="checkbox" name="solutionType" value="Dashboard" />Dashboard</label>
+          <label><input type="checkbox" name="solutionType" value="Report" />Report</label>
+          <label><input type="checkbox" name="solutionType" value="Data Pipeline" />Data Pipeline</label>
+          <label><input type="checkbox" name="solutionType" value="API Integration" />API Integration</label>
+          <label><input type="checkbox" name="solutionType" value="Data Warehouse Enhancement" />Data Warehouse Enhancement</label>
+          <label><input type="checkbox" name="solutionType" value="Data Quality Initiative" />Data Quality Initiative</label>
+          <label><input type="checkbox" name="solutionType" value="Data Governance Initiative" />Data Governance Initiative</label>
+          <label><input type="checkbox" name="solutionType" value="Master Data Management" />Master Data Management</label>
+          <label><input type="checkbox" name="solutionType" value="Predictive Analytics" />Predictive Analytics</label>
+          <label><input type="checkbox" name="solutionType" value="AI / Machine Learning" />AI / Machine Learning</label>
+          <label><input type="checkbox" name="solutionType" value="Vendor Integration" />Vendor Integration</label>
+          <label><input type="checkbox" name="solutionType" value="Other" />Other</label>
+        </fieldset>
+      </section>
+
+      <section class="form-section" id="data-assessment" data-title="Data Assessment">
+        <div class="section-heading"><span>Section 4</span><h2>Data Assessment</h2></div>
+        <div class="grid two">
+          <fieldset class="option-group"><legend>Existing Data Source?</legend><label><input type="radio" name="existingData" value="Yes" />Yes</label><label><input type="radio" name="existingData" value="No" />No</label></fieldset>
+          <fieldset class="option-group"><legend>New Data Source Required?</legend><label><input type="radio" name="newDataSource" value="Yes" />Yes</label><label><input type="radio" name="newDataSource" value="No" />No</label></fieldset>
+          <label>Existing Source(s)<textarea name="existingSources" rows="3" placeholder="Identify source systems, reports, files, or owners"></textarea></label>
+          <div class="stacked-card">
+            <label>Source Name<input name="sourceName" type="text" /></label>
+            <label>System Owner<input name="systemOwner" type="text" /></label>
+            <label>Vendor<input name="vendor" type="text" /></label>
+          </div>
+        </div>
+        <fieldset class="option-grid"><legend>Data Classification</legend>
+          <label><input type="checkbox" name="classification" value="Public" />Public</label>
+          <label><input type="checkbox" name="classification" value="Internal" />Internal</label>
+          <label><input type="checkbox" name="classification" value="Confidential" />Confidential</label>
+          <label><input type="checkbox" name="classification" value="Restricted" />Restricted</label>
+          <label><input type="checkbox" name="classification" value="Financial" />Financial</label>
+          <label><input type="checkbox" name="classification" value="Customer Data" />Customer Data</label>
+          <label><input type="checkbox" name="classification" value="Employee Data" />Employee Data</label>
+          <label><input type="checkbox" name="classification" value="Regulatory Data" />Regulatory Data</label>
+        </fieldset>
+      </section>
+
+      <section class="form-section" id="data-ownership" data-title="Data Ownership">
+        <div class="section-heading"><span>Section 5</span><h2>Data Ownership</h2></div>
+        <div class="grid two">
+          <label>Business Data Owner<input name="businessOwner" type="text" /></label>
+          <label>Technical Data Owner<input name="technicalOwner" type="text" /></label>
+          <fieldset class="option-group"><legend>Steward Assigned?</legend><label><input type="radio" name="stewardAssigned" value="Yes" />Yes</label><label><input type="radio" name="stewardAssigned" value="No" />No</label></fieldset>
+          <label>Steward Name<input name="stewardName" type="text" /></label>
+        </div>
+      </section>
+
+      <section class="form-section" id="governance-review" data-title="Governance Review">
+        <div class="section-heading"><span>Section 6</span><h2>Governance Review</h2></div>
+        <div class="grid three">
+          <fieldset class="option-group"><legend>Approved definitions?</legend><label><input type="radio" name="approvedDefinitions" value="Yes" />Yes</label><label><input type="radio" name="approvedDefinitions" value="No" />No</label></fieldset>
+          <fieldset class="option-group"><legend>New definitions required?</legend><label><input type="radio" name="newDefinitions" value="Yes" />Yes</label><label><input type="radio" name="newDefinitions" value="No" />No</label></fieldset>
+          <fieldset class="option-group"><legend>New KPI creation?</legend><label><input type="radio" name="newKpi" value="Yes" />Yes</label><label><input type="radio" name="newKpi" value="No" />No</label></fieldset>
+        </div>
+        <label>Data Quality Requirements<textarea name="dataQuality" rows="4"></textarea></label>
+        <label>Data Retention Requirements<textarea name="retention" rows="4"></textarea></label>
+      </section>
+
+      <section class="form-section" id="architecture-review" data-title="Architecture Review">
+        <div class="section-heading"><span>Section 7</span><h2>Architecture Review</h2></div>
+        <div class="grid three">
+          <fieldset class="option-group"><legend>New Integration Required?</legend><label><input type="radio" name="newIntegration" value="Yes" />Yes</label><label><input type="radio" name="newIntegration" value="No" />No</label></fieldset>
+          <fieldset class="option-group"><legend>New API Required?</legend><label><input type="radio" name="newApi" value="Yes" />Yes</label><label><input type="radio" name="newApi" value="No" />No</label></fieldset>
+          <fieldset class="option-group"><legend>New Database Objects?</legend><label><input type="radio" name="newDatabaseObjects" value="Yes" />Yes</label><label><input type="radio" name="newDatabaseObjects" value="No" />No</label></fieldset>
+        </div>
+        <label>Impacted Systems<textarea name="impactedSystems" rows="3"></textarea></label>
+        <label>Architectural Risks<textarea name="architectureRisks" rows="3"></textarea></label>
+      </section>
+
+      <section class="form-section" id="security-compliance" data-title="Security & Compliance">
+        <div class="section-heading"><span>Section 8</span><h2>Security & Compliance</h2></div>
+        <div class="grid two">
+          <fieldset class="option-group"><legend>Sensitive Data Included?</legend><label><input type="radio" name="sensitiveData" value="Yes" />Yes</label><label><input type="radio" name="sensitiveData" value="No" />No</label></fieldset>
+          <fieldset class="option-group"><legend>Security Review Required?</legend><label><input type="radio" name="securityReview" value="Yes" />Yes</label><label><input type="radio" name="securityReview" value="No" />No</label></fieldset>
+        </div>
+        <fieldset class="option-grid"><legend>Regulatory Requirements</legend>
+          <label><input type="checkbox" name="regulatory" value="SOX" />SOX</label>
+          <label><input type="checkbox" name="regulatory" value="GDPR" />GDPR</label>
+          <label><input type="checkbox" name="regulatory" value="HIPAA" />HIPAA</label>
+          <label><input type="checkbox" name="regulatory" value="PCI" />PCI</label>
+          <label><input type="checkbox" name="regulatory" value="Internal Controls" />Internal Controls</label>
+          <label><input type="checkbox" name="regulatory" value="Other" />Other</label>
+        </fieldset>
+      </section>
+
+      <section class="form-section" id="reporting-requirements" data-title="Reporting Requirements">
+        <div class="section-heading"><span>Section 9</span><h2>Reporting Requirements</h2></div>
+        <div class="grid two">
+          <fieldset class="option-group"><legend>Dashboard Required?</legend><label><input type="radio" name="dashboardRequired" value="Yes" />Yes</label><label><input type="radio" name="dashboardRequired" value="No" />No</label></fieldset>
+          <fieldset class="option-group"><legend>Report Required?</legend><label><input type="radio" name="reportRequired" value="Yes" />Yes</label><label><input type="radio" name="reportRequired" value="No" />No</label></fieldset>
+        </div>
+        <label>Intended Audience<input name="audience" type="text" /></label>
+        <label>Key Metrics Required<textarea name="metrics" rows="4"></textarea></label>
+        <fieldset class="option-grid compact"><legend>Refresh Frequency</legend>
+          <label><input type="radio" name="refresh" value="Real-Time" />Real-Time</label>
+          <label><input type="radio" name="refresh" value="Hourly" />Hourly</label>
+          <label><input type="radio" name="refresh" value="Daily" />Daily</label>
+          <label><input type="radio" name="refresh" value="Weekly" />Weekly</label>
+          <label><input type="radio" name="refresh" value="Monthly" />Monthly</label>
+        </fieldset>
+      </section>
+
+      <section class="form-section" id="development-requirements" data-title="Development Requirements">
+        <div class="section-heading"><span>Section 10</span><h2>Development Requirements</h2></div>
+        <fieldset class="option-grid"><legend>Development Activities Needed</legend>
+          <label><input type="checkbox" name="development" value="Data Modeling" />Data Modeling</label>
+          <label><input type="checkbox" name="development" value="ETL/ELT" />ETL/ELT</label>
+          <label><input type="checkbox" name="development" value="API Development" />API Development</label>
+          <label><input type="checkbox" name="development" value="Report Development" />Report Development</label>
+          <label><input type="checkbox" name="development" value="Dashboard Development" />Dashboard Development</label>
+          <label><input type="checkbox" name="development" value="Data Validation" />Data Validation</label>
+          <label><input type="checkbox" name="development" value="Automation" />Automation</label>
+          <label><input type="checkbox" name="development" value="Documentation" />Documentation</label>
+        </fieldset>
+      </section>
+
+      <section class="form-section" id="testing-requirements" data-title="Testing Requirements">
+        <div class="section-heading"><span>Section 11</span><h2>Testing Requirements</h2></div>
+        <fieldset class="option-grid"><legend>Testing Required</legend>
+          <label><input type="checkbox" name="testing" value="Unit Testing" />Unit Testing</label>
+          <label><input type="checkbox" name="testing" value="System Testing" />System Testing</label>
+          <label><input type="checkbox" name="testing" value="User Acceptance Testing" />User Acceptance Testing</label>
+          <label><input type="checkbox" name="testing" value="Performance Testing" />Performance Testing</label>
+          <label><input type="checkbox" name="testing" value="Data Validation" />Data Validation</label>
+        </fieldset>
+        <div class="acceptance-list">
+          <label>Acceptance Criteria 1<input name="acceptance1" type="text" /></label>
+          <label>Acceptance Criteria 2<input name="acceptance2" type="text" /></label>
+          <label>Acceptance Criteria 3<input name="acceptance3" type="text" /></label>
+          <label>Acceptance Criteria 4<input name="acceptance4" type="text" /></label>
+          <label>Acceptance Criteria 5<input name="acceptance5" type="text" /></label>
+        </div>
+      </section>
+
+      <section class="form-section" id="risks-dependencies" data-title="Risks & Dependencies">
+        <div class="section-heading"><span>Sections 12-13</span><h2>Risks & Dependencies</h2></div>
+        <div class="table-wrap">
+          <table><caption>Risks</caption><thead><tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr></thead><tbody id="riskRows"></tbody></table>
+        </div>
+        <div class="table-wrap">
+          <table><caption>Dependencies</caption><thead><tr><th>Dependency</th><th>Owner</th><th>Status</th></tr></thead><tbody id="dependencyRows"></tbody></table>
+        </div>
+      </section>
+
+      <section class="form-section" id="stakeholder-matrix" data-title="Stakeholder Matrix">
+        <div class="section-heading"><span>Section 14</span><h2>Stakeholder Matrix</h2></div>
+        <div class="table-wrap">
+          <table><caption>RACI</caption><thead><tr><th>Team</th><th>Responsible</th><th>Accountable</th><th>Consulted</th><th>Informed</th></tr></thead><tbody id="raciRows"></tbody></table>
+        </div>
+      </section>
+
+      <section class="form-section" id="engagement-decision-matrix" data-title="Engagement Decision Matrix">
+        <div class="section-heading"><span>Section 15</span><h2>Engagement Decision Matrix</h2></div>
+        <p class="helper-text">Required teams are calculated automatically from selected solution types, data attributes, and architecture answers.</p>
+        <div id="requiredTeams" class="pill-board" aria-live="polite"></div>
+        <div class="table-wrap">
+          <table><caption>Decision Rules</caption><thead><tr><th>Trigger</th><th>Required Teams</th></tr></thead><tbody id="decisionRows"></tbody></table>
+        </div>
+      </section>
+
+      <section class="form-section" id="phase-gate-approvals" data-title="Approvals & Status">
+        <div class="section-heading"><span>Section 16</span><h2>Phase Gate Approvals & Project Status</h2></div>
+        <div class="approval-grid" id="approvalRows"></div>
+        <fieldset class="option-grid compact"><legend>Project Status</legend>
+          <label><input type="radio" name="status" value="Intake" />Intake</label>
+          <label><input type="radio" name="status" value="Analysis" />Analysis</label>
+          <label><input type="radio" name="status" value="Design" />Design</label>
+          <label><input type="radio" name="status" value="Development" />Development</label>
+          <label><input type="radio" name="status" value="Testing" />Testing</label>
+          <label><input type="radio" name="status" value="Deployment" />Deployment</label>
+          <label><input type="radio" name="status" value="Production Support" />Production Support</label>
+          <label><input type="radio" name="status" value="Closed" />Closed</label>
+        </fieldset>
+      </section>
+
+      <section class="form-section" id="review-submit" data-title="Review & Export">
+        <div class="section-heading"><span>Final Step</span><h2>Review & Export</h2></div>
+        <p class="helper-text">Use the summary to validate routing, then copy the requirements package for Word, Dataverse notes, Planner, Jira, or Azure DevOps.</p>
+        <div class="summary-panel" id="summaryPanel"></div>
+        <div class="action-row">
+          <button type="button" class="secondary" id="copySummary">Copy Summary</button>
+          <button type="reset" class="ghost">Reset Form</button>
+          <button type="submit">Submit Intake</button>
+        </div>
+      </section>
+    </form>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
