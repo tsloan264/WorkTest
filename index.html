@@ -42,6 +42,11 @@
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
       </nav>
 
+      <button class="cart-btn" id="cart-btn" aria-label="Shopping cart, 0 items">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span class="cart-badge" id="cart-badge" hidden>0</span>
+      </button>
+
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
         <span></span><span></span><span></span>
       </button>
@@ -60,6 +65,29 @@
     </nav>
   </div>
   <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- Cart drawer -->
+  <div class="cart-backdrop" id="cart-backdrop"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-header">
+      <h2 class="cart-title">✿ Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">&#10005;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty">
+      <span class="cart-empty-icon" aria-hidden="true">✿</span>
+      <p>Your cart is empty</p>
+      <button class="btn btn-ghost" id="cart-shop-link">Browse Products</button>
+    </div>
+    <div class="cart-footer" id="cart-footer" hidden>
+      <div class="cart-total-row">
+        <span>Estimated Total</span>
+        <strong id="cart-total-amount">$0</strong>
+      </div>
+      <button class="btn btn-primary btn-full" id="cart-checkout">Place Order ✿</button>
+      <p class="cart-note">We'll confirm your order and arrange payment.</p>
+    </div>
+  </aside>
 
   <!-- ═══════════════════════════════════════════════════
        MAIN

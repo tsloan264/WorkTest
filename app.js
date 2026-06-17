@@ -13,6 +13,151 @@ const KEYS = {
   A_HOURS:  'dpp_about_hours',
 };
 
+/* ── Cart state ──────────────────────────────────────── */
+let cart = []; // [{id, name, price, priceNum, qty, emoji}]
+
+function parsePrice(str) {
+  const m = String(str).match(/\$(\d+(\.\d+)?)/);
+  return m ? parseFloat(m[1]) : 0;
+}
+
+function addToCart(item) {
+  const existing = cart.find(c => c.id === item.id);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ id: item.id, name: item.name, price: item.price,
+                priceNum: parsePrice(item.price), qty: 1, emoji: item.emoji });
+  }
+  updateCartBadge();
+  renderCart();
+  openCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  updateCartBadge();
+  renderCart();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+  updateCartBadge();
+  renderCart();
+}
+
+function cartCount() { return cart.reduce((s, c) => s + c.qty, 0); }
+function cartTotal() { return cart.reduce((s, c) => s + c.priceNum * c.qty, 0); }
+
+function updateCartBadge() {
+  const badge = $('#cart-badge');
+  const btn   = $('#cart-btn');
+  const n = cartCount();
+  badge.textContent = n;
+  badge.hidden = n === 0;
+  btn.setAttribute('aria-label', `Shopping cart, ${n} item${n !== 1 ? 's' : ''}`);
+}
+
+function renderCart() {
+  const itemsEl  = $('#cart-items');
+  const emptyEl  = $('#cart-empty');
+  const footerEl = $('#cart-footer');
+  const totalEl  = $('#cart-total-amount');
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '';
+    emptyEl.hidden    = false;
+    footerEl.hidden   = true;
+    return;
+  }
+  emptyEl.hidden  = true;
+  footerEl.hidden = false;
+
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="cart-item" data-id="${item.id}">
+      <span class="cart-item-emoji" aria-hidden="true">${item.emoji}</span>
+      <div class="cart-item-info">
+        <p class="cart-item-name">${escapeHTML(item.name)}</p>
+        <p class="cart-item-price">${escapeHTML(item.price)}</p>
+      </div>
+      <div class="cart-item-qty">
+        <button class="qty-btn" data-action="dec" data-id="${item.id}" aria-label="Remove one">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" data-action="inc" data-id="${item.id}" aria-label="Add one more">+</button>
+      </div>
+      <button class="cart-item-remove" data-id="${item.id}" aria-label="Remove from cart">&#10005;</button>
+    </div>`).join('');
+
+  const total = cartTotal();
+  totalEl.textContent = total > 0 ? `$${total.toFixed(2)}` : 'See pricing';
+}
+
+function openCart() {
+  $('#cart-drawer').classList.add('open');
+  $('#cart-backdrop').classList.add('open');
+  $('#cart-drawer').setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  $('#cart-drawer').classList.remove('open');
+  $('#cart-backdrop').classList.remove('open');
+  $('#cart-drawer').setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function checkoutCart() {
+  if (cart.length === 0) return;
+  const lines = cart.map(c => `• ${c.qty}× ${c.name} (${c.price})`).join('\n');
+  const total = cartTotal();
+  const totalLine = total > 0 ? `\n\nEstimated total: $${total.toFixed(2)}` : '';
+  const msg = `Hi! I'd like to place an order:\n\n${lines}${totalLine}\n\nPlease let me know how to pay and arrange pickup or delivery. Thank you!`;
+
+  const msgField   = $('#f-message');
+  const topicField = $('#f-topic');
+  if (msgField)   msgField.value   = msg;
+  if (topicField) topicField.value = 'custom-order';
+
+  closeCart();
+
+  const section = document.getElementById('contact');
+  if (section) {
+    const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64;
+    window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+  }
+}
+
+function initCart() {
+  $('#cart-btn').addEventListener('click', openCart);
+  $('#cart-close').addEventListener('click', closeCart);
+  $('#cart-backdrop').addEventListener('click', closeCart);
+  $('#cart-checkout')?.addEventListener('click', checkoutCart);
+  $('#cart-shop-link')?.addEventListener('click', () => {
+    closeCart();
+    const cat = document.getElementById('catalog');
+    if (cat) {
+      const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64;
+      window.scrollTo({ top: cat.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    }
+  });
+
+  $('#cart-items').addEventListener('click', e => {
+    const remove = e.target.closest('.cart-item-remove');
+    if (remove) { removeFromCart(Number(remove.dataset.id)); return; }
+    const qty = e.target.closest('.qty-btn');
+    if (qty) changeQty(Number(qty.dataset.id), qty.dataset.action === 'inc' ? 1 : -1);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && $('#cart-drawer').classList.contains('open')) closeCart();
+  });
+
+  renderCart();
+}
+
 /* ── DOM refs ────────────────────────────────────────── */
 const $  = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
@@ -160,6 +305,14 @@ async function initCatalog() {
 
   renderFilters(data.categories, data.items);
   renderItems(data.items, 'All');
+
+  /* Delegated Add-to-Cart clicks on the catalog grid */
+  $('#catalog-grid').addEventListener('click', e => {
+    const btn = e.target.closest('.btn-add-cart[data-id]');
+    if (!btn) return;
+    const item = data.items.find(i => i.id === Number(btn.dataset.id));
+    if (item && item.available) addToCart(item);
+  });
 }
 
 function renderFilters(categories, items) {
@@ -203,6 +356,10 @@ function renderItems(items, filter) {
       ? `<span class="product-badge ${badgeClass}">${item.badge || 'Sold Out'}</span>`
       : '';
 
+    const cartBtn = item.available
+      ? `<button class="btn btn-add-cart" data-id="${item.id}" aria-label="Add ${escapeHTML(item.name)} to cart">Add to Cart</button>`
+      : `<span class="product-availability avail-no">Unavailable</span>`;
+
     return `
       <article class="product-card${item.available ? '' : ' unavailable'}" role="listitem">
         <div class="product-emoji-wrap" aria-hidden="true">
@@ -215,9 +372,7 @@ function renderItems(items, filter) {
           <p class="product-desc">${escapeHTML(item.description)}</p>
           <div class="product-footer">
             <span class="product-price">${escapeHTML(item.price)}</span>
-            <span class="product-availability ${item.available ? 'avail-yes' : 'avail-no'}">
-              ${item.available ? 'Available' : 'Unavailable'}
-            </span>
+            ${cartBtn}
           </div>
         </div>
       </article>`;
@@ -462,4 +617,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCatalog();
   initContactForm();
   initAdmin();
+  initCart();
 });
