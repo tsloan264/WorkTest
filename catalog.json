@@ -1,0 +1,93 @@
+{
+  "categories": ["All", "Wreaths", "Dried Flowers", "Produce", "Gifts"],
+  "items": [
+    {
+      "id": 1,
+      "name": "Lavender Dream Wreath",
+      "category": "Wreaths",
+      "price": "$32",
+      "description": "Handcrafted from freshly dried lavender, wrapped in rustic twine with a delicate ribbon bow. Fills the room with a gentle floral scent.",
+      "emoji": "🌿",
+      "available": true,
+      "featured": true,
+      "badge": "Bestseller"
+    },
+    {
+      "id": 2,
+      "name": "Wildflower Wreath",
+      "category": "Wreaths",
+      "price": "$38",
+      "description": "A lush mix of dried wildflowers — chamomile, statice, and baby's breath — arranged on a natural grapevine base.",
+      "emoji": "🌸",
+      "available": true,
+      "featured": false,
+      "badge": "New"
+    },
+    {
+      "id": 3,
+      "name": "Dried Lavender Bundle",
+      "category": "Dried Flowers",
+      "price": "$12",
+      "description": "A generous bundle of fragrant dried lavender, perfect for sachets, floral arrangements, or hanging in your closet.",
+      "emoji": "💜",
+      "available": true,
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "id": 4,
+      "name": "Mixed Herb Bouquet",
+      "category": "Dried Flowers",
+      "price": "$15",
+      "description": "A charming bundle of dried rosemary, thyme, sage, and wildflowers — beautiful in the kitchen or as a thoughtful gift.",
+      "emoji": "🌾",
+      "available": true,
+      "featured": true,
+      "badge": ""
+    },
+    {
+      "id": 5,
+      "name": "Pressed Flower Cards",
+      "category": "Gifts",
+      "price": "$6 each",
+      "description": "Hand-pressed wildflower greeting cards — each one completely unique. Perfect for any occasion.",
+      "emoji": "🌺",
+      "available": true,
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "id": 6,
+      "name": "Lavender Sachet Set",
+      "category": "Gifts",
+      "price": "$14",
+      "description": "Set of 3 hand-sewn linen sachets filled with dried lavender. Tuck in drawers, pillowcases, or gift bags.",
+      "emoji": "🎀",
+      "available": true,
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "id": 7,
+      "name": "Seasonal Herb Starts",
+      "category": "Produce",
+      "price": "$4 each",
+      "description": "Organically grown herb seedlings — basil, mint, lemon balm, and more. Ready for pots or garden beds.",
+      "emoji": "🌱",
+      "available": true,
+      "featured": false,
+      "badge": "Seasonal"
+    },
+    {
+      "id": 8,
+      "name": "Sunflower Wreath",
+      "category": "Wreaths",
+      "price": "$42",
+      "description": "Bright dried sunflowers arranged with wheat stems and preserved greenery. A sunshine-y statement piece.",
+      "emoji": "🌻",
+      "available": false,
+      "featured": false,
+      "badge": "Coming Soon"
+    }
+  ]
+}
