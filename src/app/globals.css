@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fbf7f0;
+  --cream-mid: #f3ebe1;
+  --cream-dark: #e8ddd0;
+  --blush: #e8b4b8;
+  --blush-light: #f7e4e6;
+  --rose: #c47d82;
+  --sage: #8faf8c;
+  --sage-light: #c8dcc7;
+  --sage-dark: #5e7d60;
+  --lavender: #c5b8d4;
+  --gold: #c4933f;
+  --gold-light: #f4e3bc;
+  --warm-brown: #6b4226;
+  --text: #2d1a0e;
+  --text-muted: #7a5c47;
+  --open-fg: #3a6b3c;
+  --open-bg: #dff0df;
+  --closed-fg: #8b3a3f;
+  --closed-bg: #f6e2e3;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-mid: var(--cream-mid);
+  --color-cream-dark: var(--cream-dark);
+  --color-blush: var(--blush);
+  --color-blush-light: var(--blush-light);
+  --color-rose: var(--rose);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-sage-dark: var(--sage-dark);
+  --color-lavender: var(--lavender);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-warm-brown: var(--warm-brown);
+  --color-ink: var(--text);
+  --color-ink-muted: var(--text-muted);
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-nunito);
+}
+
+body {
+  background: var(--cream);
+  color: var(--text);
+}
+
+html {
+  scroll-behavior: smooth;
+}
