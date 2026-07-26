@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "id": 1, "caption": "Fresh wreaths ready for Saturday market", "emoji": "🌿" },
+    { "id": 2, "caption": "Custom wedding arch florals", "emoji": "💐" },
+    { "id": 3, "caption": "Sunday market table setup", "emoji": "🧺" },
+    { "id": 4, "caption": "Dried lavender harvest, midsummer", "emoji": "💜" },
+    { "id": 5, "caption": "Fall pumpkin & gourd display", "emoji": "🎃" },
+    { "id": 6, "caption": "Behind the scenes: tying bouquets", "emoji": "✂️" }
+  ]
+}

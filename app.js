@@ -11,6 +11,8 @@ const KEYS = {
   NOTE:     'dpp_note',
   ADDRESS:  'dpp_address',
   A_HOURS:  'dpp_about_hours',
+  IG_URL:   'dpp_social_instagram',
+  FB_URL:   'dpp_social_facebook',
 };
 
 /* ── DOM refs ────────────────────────────────────────── */
@@ -253,6 +255,58 @@ function getFallbackCatalog() {
 }
 
 /* ═══════════════════════════════════════════════════════
+   GALLERY — load gallery.json and render
+═══════════════════════════════════════════════════════ */
+async function initGallery() {
+  let items;
+  try {
+    const res = await fetch('gallery.json');
+    items = (await res.json()).items;
+  } catch {
+    items = getFallbackGallery();
+  }
+  renderGallery(items);
+}
+
+function renderGallery(items) {
+  const grid = $('#gallery-grid');
+  if (!grid) return;
+
+  grid.innerHTML = items.map(item => `
+    <figure class="gallery-item" role="listitem">
+      <div class="gallery-photo-frame">
+        <div class="photo-placeholder-inner">
+          <span class="photo-icon" aria-hidden="true">${item.emoji}</span>
+          <p>Photo coming soon</p>
+        </div>
+      </div>
+      <figcaption>${escapeHTML(item.caption)}</figcaption>
+    </figure>`).join('');
+}
+
+function getFallbackGallery() {
+  return [
+    { id: 1, caption: 'Fresh wreaths ready for market', emoji: '🌿' },
+    { id: 2, caption: 'Custom order in progress', emoji: '💐' },
+    { id: 3, caption: 'Market day setup', emoji: '🧺' },
+  ];
+}
+
+/* ═══════════════════════════════════════════════════════
+   SOCIAL LINKS — load saved URLs from localStorage
+═══════════════════════════════════════════════════════ */
+function loadSocial() {
+  applySocialLink('#social-instagram', localStorage.getItem(KEYS.IG_URL));
+  applySocialLink('#social-facebook', localStorage.getItem(KEYS.FB_URL));
+}
+
+function applySocialLink(selector, url) {
+  const el = $(selector);
+  if (!el || !url) return;
+  el.href = url;
+}
+
+/* ═══════════════════════════════════════════════════════
    CONTACT FORM
 ═══════════════════════════════════════════════════════ */
 function initContactForm() {
@@ -352,11 +406,15 @@ function initAdmin() {
     const noteEl      = $('#adm-note');
     const addressEl   = $('#adm-address');
     const aHoursEl    = $('#adm-about-hours');
+    const igEl        = $('#adm-instagram');
+    const fbEl         = $('#adm-facebook');
 
     if (hoursEl)   hoursEl.value   = localStorage.getItem(KEYS.HOURS)   || '';
     if (noteEl)    noteEl.value    = localStorage.getItem(KEYS.NOTE)    || '';
     if (addressEl) addressEl.value = localStorage.getItem(KEYS.ADDRESS) || '';
     if (aHoursEl)  aHoursEl.value  = localStorage.getItem(KEYS.A_HOURS) || '';
+    if (igEl)      igEl.value      = localStorage.getItem(KEYS.IG_URL)  || '';
+    if (fbEl)      fbEl.value      = localStorage.getItem(KEYS.FB_URL)  || '';
   };
 
   const closePanel = () => {
@@ -427,6 +485,21 @@ function initAdmin() {
     }
     showFeedback('#about-saved');
   });
+
+  /* Social links save */
+  $('#adm-save-social')?.addEventListener('click', () => {
+    const ig = $('#adm-instagram')?.value.trim();
+    const fb = $('#adm-facebook')?.value.trim();
+    if (ig) {
+      localStorage.setItem(KEYS.IG_URL, ig);
+      applySocialLink('#social-instagram', ig);
+    }
+    if (fb) {
+      localStorage.setItem(KEYS.FB_URL, fb);
+      applySocialLink('#social-facebook', fb);
+    }
+    showFeedback('#social-saved');
+  });
 }
 
 function showFeedback(selector) {
@@ -454,12 +527,14 @@ function escapeHTML(str) {
 document.addEventListener('DOMContentLoaded', () => {
   loadStatus();
   loadAboutInfo();
+  loadSocial();
   initHeader();
   initActiveNav();
   initMobileNav();
   initSmoothScroll();
   initScrollReveal();
   initCatalog();
+  initGallery();
   initContactForm();
   initAdmin();
 });
