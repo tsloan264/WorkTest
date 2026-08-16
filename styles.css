@@ -988,6 +988,45 @@ ul, ol { list-style: none; }
   font-size: .9rem;
 }
 
+/* Connect / social links */
+.connect-card { grid-column: 1 / -1; }
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .85rem;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .85rem 1rem;
+  background: var(--white);
+  border: 1.5px solid var(--cream-dark);
+  border-radius: var(--r-md);
+  color: var(--warm-brown);
+  text-decoration: none;
+  transition: transform var(--t-fast) var(--ease-spring),
+              border-color var(--t-fast) var(--ease),
+              box-shadow var(--t-fast) var(--ease);
+}
+.social-link:hover, .social-link:focus-visible {
+  border-color: var(--sage);
+  box-shadow: var(--sh-xs);
+  transform: translateY(-2px);
+  outline: none;
+}
+.social-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1; }
+.social-label {
+  font-weight: 700;
+  font-size: .9rem;
+  flex: 1;
+}
+.social-arrow {
+  font-size: .85rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
 /* Jotform placeholder */
 .jotform-card { min-height: 200px; }
 .jf-placeholder {
